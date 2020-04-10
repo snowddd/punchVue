@@ -3,7 +3,7 @@ import apiconfig from '../config/apiconfig';
 
 export default {
    async sendRequest(url,data) {
-    return axios.post(`${apiconfig.apiConfig.host}/${url}`, data)
+    return axios.post(`${apiconfig.apiConfig.onlinehost}/${url}`, data)
         },    
 
         // login(email,password) {

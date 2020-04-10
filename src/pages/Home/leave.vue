@@ -3,7 +3,7 @@
 <div class="loading" v-if="!dataStatus"><img src="../../assets/loading.svg"></div>
 
 <div v-if="dataStatus">
-<p style="text-align:center; font-size: 20px;"> Recent 30 leave records</p>
+<p style="text-align:center; font-size: 20px;"> Recent 15 leave records</p>
 <table border=4 align=center width=40% bgcolor=white cellspacing=5 cellpadding=6 v-if="leavejsoncheck">
   <tr>
     <td align=center>Vaction</td>
