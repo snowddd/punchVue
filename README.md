@@ -10,8 +10,8 @@ npm install
 npm run serve
 ```
 ### you can test this site 
-account: May
-password: 123456
+#### account: May
+#### password: 123456
 https://punchsystem-272703.firebaseapp.com/
 
 ### and see API 
