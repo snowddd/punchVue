@@ -10,7 +10,7 @@
     </tr>
     <tr v-for=" (pun,idx) in punchjson" :key="idx">
         <td align=center>{{punchType(pun.CheckStatus)}}</td>
-        <td align=center>{{pun.CheckTime}}</td>
+        <td align=center>{{dateFormat(new Date(pun.CheckTime))}}</td>
     </tr>
 </table>
 
@@ -36,13 +36,14 @@
 <script>
 import service from "../../services/api";
 import router from "../../router";
+import dateFormat from '../../services/dateFormat';
 export default {
   name: "Punch",
   props: {
   },
   data() {
     return {
-  punchjson :'',
+  punchjson :[],
   data:'' ,
   punchjsoncheck: true,
   dataStatus:false
@@ -50,6 +51,7 @@ export default {
   },
   beforeMount() {
     this.punchRecords();
+    
   },
   methods: {
     async punchRecords() {
@@ -106,7 +108,14 @@ export default {
     } else if (punch == 2) {
       return 'PunchOut';
     }
-  }
+  },
+dateFormat(date){
+if(date){
+    date = date + '';
+return dateFormat.dateFormat(date);
+}
+
+}
   }
 };
 </script>

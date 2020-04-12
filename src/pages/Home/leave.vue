@@ -26,7 +26,10 @@
 <form align=center>
   <div>
     <label for="party">Choose your leave date:</label>
-    <input type="date" id="party" name="party" min="" max="" v-model="leaveDate">
+    <!-- <input type="date" id="party" name="party" min="" max="" v-model="leaveDate"> -->
+    <v-date-picker no-title v-model="leaveDate" :landscape="landscape" :reactive="reactive" :min="min" :max="max"></v-date-picker>
+
+
   </div>
   <div>
     <select class="leave" v-model="leaveType" name="leave">
@@ -69,7 +72,9 @@ export default {
   leave:[],
   dataStatus:false,
   // apiStatus:false,
-  Stroge:[]
+  Stroge:[],
+  landscape: false,
+  reactive: false
     };
   },
   beforeMount() {
@@ -111,7 +116,7 @@ export default {
       async leavea() {
       if(this.leaveType && this.leaveDate ){
       let data = { "id": localStorage.getItem('id'), "Vacation": this.leaveType, "VacationDate": this.leaveDate };
-    //   if (this.checkDateMin(this.leaveDate)) {
+      if (this.checkDateMin(this.leaveDate)) {
         
       service
         .sendRequest("leave", data)
@@ -128,10 +133,10 @@ export default {
           console.log(err);
           alert('Systems error');
         });
-    //  }
-    //  else {
-    //   alert('leave fail , Check your date choose');
-    // }
+     }
+     else {
+      alert('leave fail , Check your date choose');
+    }
      }else if(!this.leaveType || !this.leaveDate){
      alert('check your leave choose , cant be null')
   }
