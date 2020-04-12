@@ -112,13 +112,7 @@ export default {
         this.dataStatus = true;
       });
     },
-    lev(){
-
-        console.log(this.leaveDate)
-
-    },
       async leavea() {
-        console.log(this.leaveDate)
       if(this.leaveType && this.leaveDate ){
       let data = { "id": localStorage.getItem('id'), "Vacation": this.leaveType, "VacationDate": this.leaveDate };
       // if (this.checkDateMin(this.leaveDate)) {
@@ -126,7 +120,7 @@ export default {
       service
         .sendRequest("leave", data)
         .then(res => {
-            console.log(res)
+            // console.log(res)
           if (res.data.returnCode === '0000') {
             // this.apiStatus = true;
             this.leaveRecords();
