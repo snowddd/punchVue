@@ -27,12 +27,11 @@
   <div>
     <label for="party">Choose your leave date:</label>
     <!-- <input type="date" id="party" name="party" min="" max="" v-model="leaveDate"> -->
-    <v-date-picker no-title v-model="leaveDate" :landscape="landscape" :reactive="reactive" :min="min" :max="max"></v-date-picker>
-
+    <b-form-datepicker v-model="leaveDate" :min="min" :max="max" locale="en"></b-form-datepicker>
 
   </div>
   <div>
-    <select class="leave" v-model="leaveType" name="leave">
+    <select class="leave" v-model="leaveType" name="leave" style="margin-top:10px">
       <option value=0>Leave for Statutory Reasons</option>
       <option value=1>Personal Leave</option>
       <option value=2>Sick Leave</option>
@@ -113,10 +112,16 @@ export default {
         this.dataStatus = true;
       });
     },
+    lev(){
+
+        console.log(this.leaveDate)
+
+    },
       async leavea() {
+        console.log(this.leaveDate)
       if(this.leaveType && this.leaveDate ){
       let data = { "id": localStorage.getItem('id'), "Vacation": this.leaveType, "VacationDate": this.leaveDate };
-      if (this.checkDateMin(this.leaveDate)) {
+      // if (this.checkDateMin(this.leaveDate)) {
         
       service
         .sendRequest("leave", data)
@@ -133,10 +138,10 @@ export default {
           console.log(err);
           alert('Systems error');
         });
-     }
-     else {
-      alert('leave fail , Check your date choose');
-    }
+    //  }
+    //  else {
+    //   alert('leave fail , Check your date choose');
+    // }
      }else if(!this.leaveType || !this.leaveDate){
      alert('check your leave choose , cant be null')
   }
@@ -147,7 +152,8 @@ export default {
     router.push('member');
 
   },
-  checkDateMin(leaveDate) {
+  async checkDateMin(leaveDate) {
+    if(leaveDate){
     //year leaveDate>nowDate
     if (parseInt(leaveDate.slice(0, 4)) > parseInt(this.nowDate.slice(0, 4))) {
       return true;
@@ -163,6 +169,7 @@ export default {
     else {
       return false;
     }
+  }
   }
   }
 };
