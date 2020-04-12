@@ -42,7 +42,7 @@ export default {
       service
         .sendRequest("login", data)
         .then(res => {
-          console.log(res);
+          // console.log(res);
           if (res.data.returnCode === "0000") {
             localStorage.setItem("id", `${res.data.id}`);
             router.push("member");

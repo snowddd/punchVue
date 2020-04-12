@@ -59,7 +59,7 @@ export default {
       service
         .sendRequest("punchRecords", data)
         .then(res => {
-          console.log(res)
+          // console.log(res)
         if (res.data.returnCode === '0000') {
           this.punchjson = res.data.return;
           this.dataStatus = true;

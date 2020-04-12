@@ -92,7 +92,7 @@ export default {
       service
         .sendRequest("leaveRecords", data)
         .then(res => {
-            console.log(res)
+            // console.log(res)
         if (res.data.returnCode === '0000') {
           this.leavejson = res.data.return;
           // localStorage.setItem('leave',JSON.stringify(res.data.return))

@@ -24,3 +24,4 @@ firebase.json
 *.sln
 *.sw?
 .
+firebase-debug.log

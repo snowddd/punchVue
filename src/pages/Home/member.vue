@@ -105,7 +105,7 @@ export default {
       service
         .sendRequest("profiLe", data)
         .then(res => {
-          console.log(res);
+          // console.log(res);
           if (res.data.returnCode === "0000") {
             this.employee = res.data.return[0];
             this.id = this.employee.id;
@@ -140,7 +140,7 @@ export default {
     logout() {
       localStorage.removeItem("id");
       localStorage.removeItem("member")
-      // localStorage.removeItem("leave")
+      // localStorage.removeItem("Leave")
       router.push("login");
     }
   }
